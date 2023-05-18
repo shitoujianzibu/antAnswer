@@ -9,6 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Overwrite test/overwrite.file.md
+        # uses: github-action-modify-file-content@main
+        uses: ./
+        with:
+          path: test/overwrite.file.md
+          body: "{{date:YYYY-MM-DD HH:mm:ss}}"
+          overwrite: "true"
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
