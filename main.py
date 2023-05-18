@@ -12,7 +12,7 @@ with open('./farm.json', 'r') as file:
     content = json.load(file)
 s = requests.Session()
 def run():
-	response = s.get("http://www.xuexili.com/mayizhuangyuan/jinridaan.html")
+	response = s.get(URL)
 	response.encoding="utf-8"
 	bs = BeautifulSoup(response.text, 'html.parser')
 	contentbox = bs.find("div", "content")
