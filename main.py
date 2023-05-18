@@ -16,11 +16,10 @@ def run():
 	response.encoding="utf-8"
 	bs = BeautifulSoup(response.text, 'html.parser')
 	contentbox = bs.find("div", "content")
-	print(contentbox)
 	table = contentbox.find("table").find('table')
-	print(table)
 	trs = table.find_all("tr")
 	content['data'] = []
+	print('清空data')
 	for tr in trs:
 		if tr:
 			tds = tr.find_all("td")
@@ -36,7 +35,7 @@ def run():
 			with open(os.path.join('./farm.json'), 'w') as f_new:
 				json.dump(content, f_new, ensure_ascii=False)
 		print('tr not found')
-
+	print('插入data完成')
 def main():
 	run()
 if __name__ == '__main__':
