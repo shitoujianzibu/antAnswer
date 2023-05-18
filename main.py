@@ -8,8 +8,10 @@ from decouple import config
 
 URL = config("URL")
 # test
-with open('./farm.json', 'r') as file:
-    content = json.load(file)
+
+content = {
+	'data': []
+}
 s = requests.Session()
 def run():
 	response = s.get(URL)

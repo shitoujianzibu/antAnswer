@@ -22,9 +22,3 @@ jobs:
           python main.py
         env:
           URL: ${{ secrets.URL }}
-      - name: Modify README.md
-        uses: jaywcjlove/github-action-modify-file-content@main
-        with:
-          path: README.md
-          body: "overwrite file content {{date:YYYY-MM-DD HH:mm:ss}}",
-          overwrite: 'true'
