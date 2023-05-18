@@ -9,13 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Overwrite test/overwrite.file.md
-        # uses: github-action-modify-file-content@main
-        uses: ./
+      - name: Modify README.md
+        uses: jaywcjlove/github-action-modify-file-content@main
         with:
-          path: test/overwrite.file.md
-          body: "{{date:YYYY-MM-DD HH:mm:ss}}"
-          overwrite: "true"
+          path: README.md
+          body: "overwrite file content {{date:YYYY-MM-DD HH:mm:ss}}",
+          overwrite: 'true'
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
