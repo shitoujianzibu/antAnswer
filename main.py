@@ -7,8 +7,6 @@ import os
 from decouple import config
 
 URL = config("URL")
-# test
-# test
 
 content = {
 	'data': []
@@ -42,8 +40,24 @@ def run():
 		print('插入data完成')
 	else:
 		print('请求失败')
+def getTodayData():
+	response = s.get("http://m.bzqm8.com/sy9321.html")
+	response.encoding="utf-8"
+	if response.status_code == 200:
+		bs = BeautifulSoup(response.text, 'html.parser')
+		articleDes = bs.find("section", "article_des")
+		fisrtP = articleDes.p
+		nextP = fisrtP.next_sibling
+		print(fisrtP.get_text())
+		print(nextP.get_text())
+		s.post("https://thor.emoz.top/ant/insert.php", '', {
+			'data': [fisrtP.get_text(), nextP.get_text()]
+		})
+	else:
+		print('请求失败')
 def main():
 	run()
+	getTodayData()
 if __name__ == '__main__':
 	try:
 		sys.exit(main())
