@@ -14,9 +14,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16 # node版本
-          cache: "yarn"
       - name: install
-        run: yarn install
+        run: npm install
       - name: build
         run: node start.js # 此处是你node项目的构建脚本
       - name: Push new README.md
