@@ -15,6 +15,8 @@ axios.get('http://www.xuexili.com/mayizhuangyuan/jinridaan.html').then(res => {
   const nextText = `${today2Date.text().split('年')[1].trim()}问题：${today2Question.text().trim()} 答案：${today2Answer.text().trim()}`;
   axios.post("https://thor.emoz.top/ant/insert.php", {
     'data': [firstText, nextText]
+  }).then(res => {
+    console.log('插入成功', res.data);
   })
   console.log(firstText, nextText);
 })
