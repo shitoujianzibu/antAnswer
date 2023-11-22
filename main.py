@@ -18,9 +18,7 @@ def run():
 	if response.status_code == 200:
 		bs = BeautifulSoup(response.text, 'html.parser')
 		contentbox = bs.find("div", "content")
-		print(contentbox)
 		table = contentbox.find("table").find('table')
-		print(table)
 		trs = table.find_all("tr")
 		content['data'] = []
 		print('清空data')
